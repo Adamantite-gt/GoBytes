@@ -26,7 +26,7 @@ FROM setup AS test
 
 # Default command to run when starting this stage:
 # Run both the Mocha (JavaScript) tests and the Go tests.
-CMD ["sh", "-c", "npx mocha test && go test -v ./test-port"]
+CMD ["sh", "-c", "echo 'Running original JS tests..' && npx mocha test && echo 'Running native Go tests...' && go test -v ./test-port && echo '\nRunning fuzz difference...' && npm run fuzz && echo '\nRunning benchmarks...' && npm run bench"]
 
 # build the image:
 #     docker build --target (setup|test) -t bytes-go:test .
