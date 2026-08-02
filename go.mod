@@ -1,3 +1,3 @@
-module github.com/DebadityaDas05/go-bytes
+module github.com/Adamantite-gt/GoBytes
 
 go 1.26.3

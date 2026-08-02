@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	bytesutil "github.com/DebadityaDas05/go-bytes/src"
+	bytesutil "github.com/Adamantite-gt/GoBytes/src"
 )
 
 func BenchmarkParseString(b *testing.B) {

@@ -1,5 +1,5 @@
 {
-  "name": "bytes-go",
+  "name": "GoBytes",
   "version": "1.0.0",
   "description": "Go native implementation of bytes exposed to Node.js via Koffi FFI",
   "main": "index.js",

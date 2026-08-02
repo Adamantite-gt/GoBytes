@@ -10,7 +10,7 @@ import (
 	"sort"
 	"time"
 
-	bytesutil "github.com/DebadityaDas05/go-bytes/src"
+	bytesutil "github.com/Adamantite-gt/GoBytes/src"
 )
 
 type Results struct {
