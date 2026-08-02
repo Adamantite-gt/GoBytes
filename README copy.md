@@ -1,11 +1,10 @@
-# bytes-go
-
+# GoBytes
 A high-performance, cross-language byte utility library written in **Go** and exposed to **Node.js** via a CGo bridge and [Koffi](https://koffi.dev/) FFI. 
 
 Ported directly from TJ Holowaychuk's original [`bytes`](https://github.com/bytesjs/bytes.js) module with 100% feature parity.
 
----
 
+---
 ## 🛠️ Prerequisites
 
 Ensure you have the following installed on your system:
@@ -23,8 +22,8 @@ Ensure you have the following installed on your system:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/DebadityaDas05/go-bytes.git
-cd go-bytes
+git clone https://github.com/Adamantite-gt/GoBytes.git
+cd GoBytes
 ```
 
 ### 2. Install Node.js Dependencies
@@ -56,6 +55,30 @@ Compile the Go CGo bridge into a shared library binary for your platform:
   npm run build
   ```
 
+---
+
+## 🐳 Docker Setup
+
+Docker provides an isolated environment to build and test the project without installing local toolchains.
+
+### 1. Build the Development Environment
+To build an image with Go, Node.js, and all required dependencies (the `setup` target):
+```bash
+docker build --target setup -t bytes-go:setup .
+```
+
+### 2. Run the Tests via Docker
+To build and run the test image (which automatically executes both Mocha and Go tests):
+```bash
+docker build --target test -t bytes-go:test .
+docker run --rm bytes-go:test
+```
+
+For an interactive test shell:
+```bash
+docker run -it --rm bytes-go:test bash
+
+```
 ---
 
 ## 🧪 Running Tests & Fuzzing
@@ -151,12 +174,13 @@ bytes-go/
 │   └── log.txt             # 60s+ execution log demonstrating 0 divergences
 ├── src/
 │   └── bytes.go            # Pure Go implementation of bytes formatting and parsing
-├── test-original/
+├── test/
 │   ├── bytes.js            # Core constructor unit tests (Mocha)
 │   ├── byte-format.js      # Format function test suite (Mocha)
 │   └── byte-parse.js       # Parse function test suite (Mocha)
 ├── test-port/
 │   └── bytes_test.go       # Go native unit test suite
+├── Dockerfile              # Docker configuration for dev and test environments
 ├── index.js                # Node.js FFI wrapper powered by Koffi
 ├── go.mod                  # Go module definition
 ├── package.json            # Node.js package configuration
