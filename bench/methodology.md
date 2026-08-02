@@ -1,6 +1,6 @@
 # Performance Benchmark Methodology
 
-This document outlines the engineering methodology, mathematical formulas, measurement procedures, and environment configurations used to evaluate the performance of the **native Go implementation** ([`github.com/DebadityaDas05/go-bytes`](https://github.com/DebadityaDas05/go-bytes)) compared to the original V8 JavaScript reference library and C-shared Koffi FFI runtime bindings.
+This document outlines the engineering methodology, mathematical formulas, measurement procedures, and environment configurations used to evaluate the performance of the **native Go implementation** ([`github.com/Adamantite-gt/GoBytes`](https://github.com/Adamantite-gt/GoBytes)) compared to the original V8 JavaScript reference library and C-shared Koffi FFI runtime bindings.
 
 ---
 
@@ -8,18 +8,18 @@ This document outlines the engineering methodology, mathematical formulas, measu
 
 The benchmark suite evaluates performance across three distinct execution layers:
 
-1. **Native Go Library ([`src/bytes.go`](https://github.com/DebadityaDas05/go-bytes/blob/main/src/bytes.go))**: Compiled, zero-overhead native Go binary routines.
-2. **Go C-Shared FFI Bridge ([`bridge/bridge.go`](https://github.com/DebadityaDas05/go-bytes/blob/main/bridge/bridge.go))**: Go exports compiled into a C-shared dynamic library (`libbytes.dll` / `libbytes.so`) invoked via Node.js Koffi FFI.
+1. **Native Go Library ([`src/bytes.go`](https://github.com/Adamantite-gt/GoBytes/blob/main/src/bytes.go))**: Compiled, zero-overhead native Go binary routines.
+2. **Go C-Shared FFI Bridge ([`bridge/bridge.go`](https://github.com/Adamantite-gt/GoBytes/blob/main/bridge/bridge.go))**: Go exports compiled into a C-shared dynamic library (`libbytes.dll` / `libbytes.so`) invoked via Node.js Koffi FFI.
 3. **JS Reference Implementation**: Original pure V8 JavaScript library executing on Node.js v20.x.
 
 ---
 
 ## 2. Benchmark Suite Components
 
-All benchmarking code resides in the [`bench/`](https://github.com/DebadityaDas05/go-bytes/tree/main/bench) directory:
+All benchmarking code resides in the [`bench/`](https://github.com/Adamantite-gt/GoBytes/tree/main/bench) directory:
 
-- **[`bench/bytes_bench_test.go`](https://github.com/DebadityaDas05/go-bytes/blob/main/bench/bytes_bench_test.go)**: Standard Go microbenchmark suite leveraging Go's `testing.B` harness with memory allocation profiling (`b.ReportAllocs()`).
-- **[`bench/main.go`](https://github.com/DebadityaDas05/go-bytes/blob/main/bench/main.go)**: Standalone Go application that executes 500,000 iterations per target function, measures nanosecond-precision tail latencies ($P_{99}$), collects Go runtime memory allocation statistics (`runtime.ReadMemStats`), and writes results to [`bench/results.json`](https://github.com/DebadityaDas05/go-bytes/blob/main/bench/results.json).
+- **[`bench/bytes_bench_test.go`](https://github.com/Adamantite-gt/GoBytes/blob/main/bench/bytes_bench_test.go)**: Standard Go microbenchmark suite leveraging Go's `testing.B` harness with memory allocation profiling (`b.ReportAllocs()`).
+- **[`bench/main.go`](https://github.com/Adamantite-gt/GoBytes/blob/main/bench/main.go)**: Standalone Go application that executes 500,000 iterations per target function, measures nanosecond-precision tail latencies ($P_{99}$), collects Go runtime memory allocation statistics (`runtime.ReadMemStats`), and writes results to [`bench/results.json`](https://github.com/Adamantite-gt/GoBytes/blob/main/bench/results.json).
 
 ---
 
@@ -29,7 +29,7 @@ All benchmarking code resides in the [`bench/`](https://github.com/DebadityaDas0
 - **Definition**: Time in milliseconds ($\text{ms}$) elapsed between process/module invocation and ready state for processing requests.
 - **Go Native Measurement**:
 
-  $$\text{Startup} = \frac{t_{\text{first\_call}} - t_{\text{init}}}{1,000,000} \quad (\text{ms})$$
+  $$\text{Startup} = \frac{t_{\text{first}\_\text{call}} - t_{\text{init}}}{1,000,000} \quad (\text{ms})$$
 
   Captured using `time.Now()` nanosecond monotonic clock resolution.
 - **JS / FFI Measurement**: Captures V8 module parsing, symbols binding, and dynamic C-shared library (`libbytes.dll`) loading time.
@@ -76,4 +76,4 @@ go test -bench=. ./bench
 ```bash
 go run ./bench/main.go
 ```
-*(Updates [`bench/results.json`](https://github.com/DebadityaDas05/go-bytes/blob/main/bench/results.json) with quantitative results).*
+*(Updates [`bench/results.json`](https://github.com/Adamantite-gt/GoBytes/blob/main/bench/results.json) with quantitative results).*
