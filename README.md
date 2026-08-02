@@ -18,45 +18,6 @@ Ensure you have the following installed on your system:
 
 ---
 
-## 🚀 Quick Setup & Build
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Adamantite-gt/GoBytes.git
-cd GoBytes
-```
-
-### 2. Install Node.js Dependencies
-```bash
-npm install
-```
-
-### 3. Build Native Shared Library
-
-Compile the Go CGo bridge into a shared library binary for your platform:
-
-- **Windows**:
-  ```powershell
-  go build -buildmode=c-shared -o libbytes.dll ./bridge
-  ```
-
-- **Linux**:
-  ```bash
-  go build -buildmode=c-shared -o libbytes.so ./bridge
-  ```
-
-- **macOS**:
-  ```bash
-  go build -buildmode=c-shared -o libbytes.dylib ./bridge
-  ```
-
-- **Npm Build Script (Cross-Platform Helper)**:
-  ```bash
-  npm run build
-  ```
-
----
-
 ## 🐳 Docker Setup
 
 Docker provides an isolated environment to build and test the project without installing local toolchains.
@@ -79,6 +40,33 @@ For an interactive test shell:
 docker run -it --rm bytes-go:test bash
 
 ```
+
+---
+
+## 📦 Installation (Go)
+
+Installing the Go package from GitHub is done directly through the Go CLI.
+
+### Adding a Library to Your Project (`go get`)
+
+**1. Initialize your module** *(Skip if already done)*:
+If you haven't already started a Go module in your project folder, run this first to create a `go.mod` file to track your dependencies:
+```bash
+go mod init your-project-name
+```
+
+**2. Download the package**:
+Run `go get` followed by the GitHub URL to install the GoBytes library:
+```bash
+go get github.com/Adamantite-gt/GoBytes
+```
+
+**3. Import it in your code**:
+You can now import and use the package at the top of your `.go` files:
+```go
+import "github.com/Adamantite-gt/GoBytes/src"
+```
+
 ---
 
 ## 🧪 Running Tests & Fuzzing

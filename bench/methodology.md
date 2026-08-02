@@ -28,7 +28,9 @@ All benchmarking code resides in the [`bench/`](https://github.com/DebadityaDas0
 ### A. Startup Time (`startup_ms`)
 - **Definition**: Time in milliseconds ($\text{ms}$) elapsed between process/module invocation and ready state for processing requests.
 - **Go Native Measurement**:
+
   $$\text{Startup} = \frac{t_{\text{first\_call}} - t_{\text{init}}}{1,000,000} \quad (\text{ms})$$
+
   Captured using `time.Now()` nanosecond monotonic clock resolution.
 - **JS / FFI Measurement**: Captures V8 module parsing, symbols binding, and dynamic C-shared library (`libbytes.dll`) loading time.
 
