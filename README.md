@@ -97,16 +97,12 @@ npm run fuzz
 Run the benchmark suite to evaluate throughput ($\text{ops/sec}$), tail latency ($P_{99}$), startup time, and memory footprint:
 
 ```bash
-# Run Go standalone benchmark runner (exports bench/results.json)
-go run ./bench/main.go
-
-# Run Go standard testing.B microbenchmarks
-go test -bench=. ./bench
+npm run bench
 ```
 
 Detailed benchmarking methodologies and empirical results can be found in:
-- [`bench/methodology.md`](https://github.com/DebadityaDas05/go-bytes/blob/main/bench/methodology.md)
-- [`bench/results.json`](https://github.com/DebadityaDas05/go-bytes/blob/main/bench/results.json)
+- [`bench/methodology.md`](https://github.com/Adamantite-gt/GoBytes/blob/main/bench/methodology.md)
+- [`bench/results.json`](https://github.com/Adamantite-gt/GoBytes/blob/main/bench/results.json)
 
 ---
 ## Usage
