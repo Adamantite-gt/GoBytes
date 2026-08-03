@@ -261,7 +261,7 @@ func main() {
 ## 🏗️ Project Architecture
 
 ```text
-bytes-go/
+GoBytes/
 ├── bench/
 │   ├── benchmark.js        # Node.js performance benchmark runner
 │   ├── bytes_bench_test.go # Go standard testing.B microbenchmarks
@@ -271,21 +271,26 @@ bytes-go/
 ├── bridge/
 │   └── bridge.go           # CGo export functions bridging C types to Go
 ├── fuzz/
+│   ├── BUGS_FOUND.md       # Log of bugs found during differential fuzzing
 │   ├── harness.js          # Differential fuzzer engine comparing JS vs Go
 │   ├── index.js            # Original reference JS library
 │   └── log.txt             # 60s+ execution log demonstrating 0 divergences
 ├── src/
 │   └── bytes.go            # Pure Go implementation of bytes formatting and parsing
 ├── test/
-│   ├── bytes.js            # Core constructor unit tests (Mocha)
+│   ├── .eslintrc.yml       # ESLint configuration for test suite
 │   ├── byte-format.js      # Format function test suite (Mocha)
-│   └── byte-parse.js       # Parse function test suite (Mocha)
+│   ├── byte-parse.js       # Parse function test suite (Mocha)
+│   └── bytes.js            # Core constructor unit tests (Mocha)
 ├── test-port/
 │   └── bytes_test.go       # Go native unit test suite
+├── .gitignore              # Git ignore rules
+├── DECISIONS.md            # Architecture and implementation decisions log
 ├── Dockerfile              # Docker configuration for dev and test environments
-├── index.js                # Node.js FFI wrapper powered by Koffi
 ├── go.mod                  # Go module definition
+├── index.js                # Node.js FFI wrapper powered by Koffi
 ├── package.json            # Node.js package configuration
+├── port-mortem.toml        # Port-Mortem project metadata
 └── README.md               # Project documentation
 ```
 
